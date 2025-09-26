@@ -1,0 +1,19 @@
+{
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true
+	},
+	"editor.formatOnSaveMode": "file",
+	"python.analysis.typeCheckingMode": "basic",
+	"python.defaultInterpreterPath": "D:\\miniconda3\\envs\\c306-project-I\\python.exe",
+	"python.analysis.diagnosticSeverityOverrides": {
+		"reportMissingModuleSource": "none"
+	},
+	"pylint.enabled": true,
+	"files.autoSave": "onFocusChange",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "always",
+		"source.fixAll": "always"
+	},
+}
