@@ -2,3 +2,5 @@ myData/
 labels.csv
 
 *.pickle
+
+__pycache__/

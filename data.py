@@ -64,10 +64,6 @@ def load_labels() -> Dict[int, str]:
                        Keys are class IDs (0 to NUM_CATEGORIES-1), values are descriptive
                        class names (e.g., "Speed limit (30km/h)", "Stop", etc.).
 
-    Raises:
-        FileNotFoundError: If neither the pickle file nor the CSV file exists.
-        ValueError: If the CSV file is malformed or missing required columns.
-
     Example:
         >>> label_map = load_labels()
         >>> print(label_map[0])  # Should print something like "Speed limit (20km/h)"
@@ -124,11 +120,6 @@ def load_data(label_map: Dict[int, str]) -> Tuple[np.ndarray, np.ndarray]:
                                      image with pixel values normalized to [0,1].
             - target (np.ndarray): Class labels with shape (n_samples,) containing
                                   integer class IDs corresponding to the images.
-
-    Raises:
-        FileNotFoundError: If the data directory or required files don't exist.
-        ValueError: If the label_map doesn't contain expected class IDs.
-        MemoryError: If insufficient memory for loading the dataset.
 
     Note:
         - Images are automatically resized to 32x32 pixels with 3 color channels
