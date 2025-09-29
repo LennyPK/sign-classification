@@ -46,6 +46,9 @@ def train_with_mlp(
         learning_rate_init=learning_rate_init,
         max_iter=max_iter,
         random_state=random_state,
+        early_stopping=True,
+        validation_fraction=0.1,
+        n_iter_no_change=50,
         verbose=verbose,
     )
 

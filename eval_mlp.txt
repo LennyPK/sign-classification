@@ -1,0 +1,63 @@
+====================================================================================================
+EVALUATION REPORT
+====================================================================================================
+                                                    precision    recall  f1-score   support
+
+                              Speed limit (20km/h)       0.98      0.94      0.96        90
+                              Speed limit (30km/h)       0.98      0.97      0.97       984
+                              Speed limit (50km/h)       0.95      0.95      0.95       522
+                              Speed limit (60km/h)       0.93      0.98      0.95       534
+                              Speed limit (70km/h)       0.96      0.97      0.97       750
+                              Speed limit (80km/h)       0.97      0.95      0.96       702
+                       End of speed limit (80km/h)       0.99      0.99      0.99       156
+                             Speed limit (100km/h)       0.97      0.97      0.97       546
+                             Speed limit (120km/h)       0.98      0.97      0.98       534
+                                        No passing       0.98      1.00      0.99       558
+      No passing for vechiles over 3.5 metric tons       0.97      0.99      0.98       762
+             Right-of-way at the next intersection       0.98      0.97      0.97       498
+                                     Priority road       0.98      0.96      0.97       798
+                                             Yield       0.99      0.99      0.99       816
+                                              Stop       0.99      0.99      0.99       294
+                                       No vechiles       0.97      0.95      0.96       234
+          Vechiles over 3.5 metric tons prohibited       1.00      1.00      1.00       156
+                                          No entry       0.99      0.99      0.99       420
+                                   General caution       0.98      0.99      0.98       456
+                       Dangerous curve to the left       0.87      0.95      0.91        78
+                      Dangerous curve to the right       0.96      0.87      0.91       132
+                                      Double curve       0.97      0.95      0.96       120
+                                        Bumpy road       1.00      0.99      0.99       144
+                                     Slippery road       0.98      0.96      0.97       192
+                         Road narrows on the right       0.93      0.97      0.95       102
+                                         Road work       0.97      0.97      0.97       570
+                                   Traffic signals       0.96      0.95      0.95       228
+                                       Pedestrians       0.97      0.99      0.98        90
+                                 Children crossing       0.94      0.98      0.96       204
+                                 Bicycles crossing       0.98      0.90      0.94       102
+                                Beware of ice/snow       0.94      0.97      0.95       168
+                             Wild animals crossing       0.97      0.97      0.97       294
+               End of all speed and passing limits       0.90      0.98      0.94        90
+                                  Turn right ahead       1.00      0.97      0.98       258
+                                   Turn left ahead       0.98      0.96      0.97       156
+                                        Ahead only       0.99      0.98      0.99       456
+                              Go straight or right       0.99      1.00      1.00       144
+                               Go straight or left       1.00      0.97      0.99        78
+                                        Keep right       0.99      0.99      0.99       786
+                                         Keep left       1.00      1.00      1.00       114
+                              Roundabout mandatory       0.98      0.95      0.97       132
+                                 End of no passing       0.99      0.99      0.99        90
+End of no passing by vechiles over 3.5 metric tons       1.00      0.99      0.99        90
+
+                                          accuracy                           0.97     14628
+                                         macro avg       0.97      0.97      0.97     14628
+                                      weighted avg       0.97      0.97      0.97     14628
+
+Accuracy: 97.34%
+Precision (Macro): 97.14%
+Recall (Macro): 97.05%
+F1 (Macro): 97.07%
+Precision (Weighted): 97.37%
+Recall (Weighted): 97.34%
+F1 (Weighted): 97.34%
+Precision (Micro): 97.34%
+Recall (Micro): 97.34%
+F1 (Micro): 97.34%
