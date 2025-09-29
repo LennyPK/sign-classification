@@ -6,6 +6,7 @@ more maintainableand allows for easy parameter tuning.
 """
 
 from pathlib import Path
+from typing import Dict, Literal
 
 # =============================================================================
 # PROJECT PATHS
@@ -46,3 +47,30 @@ NUM_CATEGORIES = 43
 # Parameters that control how data is loaded and processed in batches
 
 BATCH_SIZE = 1000  # Number of images to process in each batch to manage memory usage
+VERBOSE = True  # Enable detailed logging output during data processing operations
+
+# =============================================================================
+# MACHINE LEARNING PARAMETERS
+# =============================================================================
+# Parameters for model training and evaluation
+
+# Train/test split parameters
+TEST_SIZE = 0.2  # Proportion of data to use for testing
+RANDOM_STATE = 0  # Random seed for reproducibility
+
+# Cross-validation parameters
+CV_FOLDS = 2  # Number of cross-validation folds for grid search
+N_JOBS = -1  # Number of parallel jobs (-1 for all cores)
+
+# SVC parameter grids
+SVCParamGridKey = Literal["linear", "rbf", "poly", "comprehensive"]
+SVC_PARAM_GRIDS: Dict[SVCParamGridKey, dict] = {
+    "linear": {"C": [0.1, 1, 10], "kernel": ["linear"]},
+    "rbf": {"C": [0.1, 1, 10], "gamma": [0.0001, 0.001, 0.1], "kernel": ["rbf"]},
+    "poly": {"C": [0.1, 1, 10], "kernel": ["poly"]},
+    "comprehensive": {
+        "C": [0.1, 1, 10],
+        "gamma": [0.0001, 0.001, 0.1],
+        "kernel": ["linear", "poly", "rbf"],
+    },
+}

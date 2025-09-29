@@ -1,13 +1,26 @@
-"""main.py"""
+"""Main script for traffic sign classification project.
+
+This script orchestrates the complete machine learning pipeline:
+1. Load and preprocess data
+2. Split data into train/test sets
+3. Train models with hyperparameter optimization
+4. Evaluate model performance
+5. Generate comprehensive reports
+"""
 
 import gc
 
 import pandas as pd
-from sklearn import svm
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import GridSearchCV, train_test_split
 
 import data
+from config import CV_FOLDS, N_JOBS, SVC_PARAM_GRIDS
+from model import (
+    gridsearch_with_params,
+    train_svc_with_params,
+    train_with_mlp,
+)
+from preprocessing import preprocessing_data
 
 
 def main():
@@ -23,97 +36,71 @@ def main():
 
     gc.collect()
 
-    df = pd.DataFrame(flat_data)
-    df["Target"] = target
-    print(df.head())
-    print(df.shape)
+    x_train, y_train, x_test, y_test = preprocessing_data(flat_data, target)
 
-    x = df.iloc[:, :-1]
-    y = df.iloc[:, -1]
+    print("=" * 100)
+    print("TRAIN MODEL")
+    print("=" * 100)
 
-    print("Splitting data...")
-    x_train, x_test, y_train, y_test = train_test_split(
-        x, y, test_size=0.2, random_state=0, stratify=y
+    # MLP model
+    model = train_with_mlp(
+        x_train,
+        y_train,
+        learning_rate_init=0.0001,
+        max_iter=100000,
+        random_state=0,
+        verbose=True,
     )
-    print("Data split successfully")
-    print("====== Train Data Shapes ======")
-    print("X_train shape:", x_train.shape)
-    print("y_train shape:", y_train.shape)
-    print("====== Test Data Shapes =======")
-    print("X_test shape:", x_test.shape)
-    print("y_test shape:", y_test.shape)
-    print("===============================")
-
-    # model = MLPClassifier(
-    #     random_state=0, learning_rate_init=0.0001, max_iter=100000, verbose=True
-    # )
-    # print(model)
-    # print("MLP Model configured")
-    # model.fit(x_train, y_train)
-    # print("MLP Model fitted")
-    # y_pred = model.predict(x_test)
-
-    # acc_score = accuracy_score(y_test, y_pred)
-    # print(f"MLP Accuracy Score: {acc_score * 100:.2f}%") # 97.74%
+    # Accuracy Score: 97.74%
 
     # SVC model
-    # param_grid = {
-    #     "C": [0.1, 1, 10],
-    #     "gamma": [0.0001, 0.001, 0.1],
-    #     "kernel": ["linear", "rbf"],
-    # }
-    param_grid = {
-        "C": [0.1, 1, 10],
-        "kernel": ["poly"],
-    }
-
-    svc = svm.SVC(verbose=True)
-    print("The training of the model has started")
-    model = GridSearchCV(svc, param_grid, verbose=2, n_jobs=-1, cv=2)
-    print(model)
-    print("The model is being fitted")
-    model.fit(x_train, y_train)
-    print("The training of the model has ended")
-    print("Best parameters found: ", model.best_params_)
-
-    y_pred_svc = model.predict(x_test)
-    acc_score_svc = accuracy_score(y_test, y_pred_svc)
-    print(f"SVC Accuracy Score: {acc_score_svc * 100:.2f}%")
-
-    """Poly SVC with best parameters from GridSearchCV"""
-    # Parameter grid: "C": [0.1, 1, 10], "kernel": ["poly"]
-    # Best parameters found: {'C': 10, 'kernel': 'poly'}
-    # SVC Accuracy Score: 84.82%
-
-    """RBF SVC with best parameters from GridSearchCV"""
-    # Parameter grid: "C": [0.1, 1, 10], "gamma": [0.0001, 0.001, 0.1], "kernel": ["rbf"]
-    # Best parameters found: {'C': 10, 'gamma': 0.001, 'kernel': 'rbf'}
-    # SVC Accuracy Score: 95.08%
-
-    """Linear SVC with best parameters from GridSearchCV"""
-    # Parameter grid: "C": [0.1, 1, 10], "kernel": ["linear"]
+    gridsearch_with_params(
+        x_train,
+        y_train,
+        kernel="linear",
+        param_grid=SVC_PARAM_GRIDS["linear"],
+        cv=CV_FOLDS,
+        n_jobs=-N_JOBS,
+        verbose=2,
+    )
     # Best parameters found: {'C': 1, 'kernel': 'linear'}
+
+    gridsearch_with_params(
+        x_train,
+        y_train,
+        kernel="rbf",
+        param_grid=SVC_PARAM_GRIDS["rbf"],
+        cv=CV_FOLDS,
+        n_jobs=-N_JOBS,
+        verbose=2,
+    )
+    # Best parameters found: {'C': 10, 'gamma': 0.001, 'kernel': 'rbf'}
+
+    gridsearch_with_params(
+        x_train,
+        y_train,
+        kernel="polynomial",
+        param_grid=SVC_PARAM_GRIDS["poly"],
+        cv=CV_FOLDS,
+        n_jobs=-N_JOBS,
+        verbose=2,
+    )
+    # Best parameters found: {'C': 10, 'kernel': 'poly'}
+
+    model = train_svc_with_params(x_train, y_train, kernel="linear", C=1, verbose=True)
     # SVC Accuracy Score: 98.14%
 
-    """Linear SVC with custom parameters (1 fold)"""
-    # clf = svm.SVC(kernel="linear", C=1, gamma="scale", verbose=True)
-    # print(clf)
-    # print("SVC Model configured")
-    # clf.fit(x_train, y_train)
-    # print("SVC Model fitted")
-    # y_pred_svc = clf.predict(x_test)
-    # acc_score_svc = accuracy_score(y_test, y_pred_svc)
-    # print(f"SVC Accuracy Score: {acc_score_svc * 100:.2f}%")  # 98.14%
+    model = train_svc_with_params(
+        x_train, y_train, kernel="rbf", C=10, gamma=0.001, verbose=True
+    )
+    # SVC Accuracy Score: 95.08%
 
-    """RBF SVC with custom parameters (1 fold)"""
-    # clf = svm.SVC(kernel="rbf", C=1, gamma=0.001, verbose=True)
-    # print(clf)
-    # print("SVC Model configured")
-    # clf.fit(x_train, y_train)
-    # print("SVC Model fitted")
-    # y_pred_svc = clf.predict(x_test)
-    # acc_score_svc = accuracy_score(y_test, y_pred_svc)
-    # print(f"SVC Accuracy Score: {acc_score_svc * 100:.2f}%") #80.50%
+    model = train_svc_with_params(x_train, y_train, kernel="poly", C=10, verbose=True)
+    # SVC Accuracy Score: 84.82%
+
+    y_pred = model.predict(x_test)
+    acc_score = accuracy_score(y_test, y_pred)
+    print(f"SVC Accuracy Score: {acc_score * 100:.2f}%")
 
 
 if __name__ == "__main__":

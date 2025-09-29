@@ -21,8 +21,8 @@ Example:
     >>> print(f"Loaded {len(label_map)} classes")
     >>>
     >>> # Load preprocessed image data
-    >>> X, y = load_data(label_map)
-    >>> print(f"Loaded {X.shape[0]} images with {X.shape[1]} features each")
+    >>> x, y = load_data(label_map)
+    >>> print(f"Loaded {x.shape[0]} images with {x.shape[1]} features each")
 """
 
 import os
@@ -69,6 +69,10 @@ def load_labels() -> Dict[int, str]:
         >>> print(label_map[0])  # Should print something like "Speed limit (20km/h)"
         >>> print(len(label_map))  # Should print 43 (NUM_CATEGORIES)
     """
+    print("=" * 100)
+    print("LOADING LABELS")
+    print("=" * 100)
+
     if os.path.exists(LABELS_PICKLE_PATH):
         print("Loading labels from cached pickle file...")
 
@@ -129,11 +133,15 @@ def load_data(label_map: Dict[int, str]) -> Tuple[np.ndarray, np.ndarray]:
 
     Example:
         >>> label_map = load_labels()
-        >>> X, y = load_data(label_map)
-        >>> print(f"Loaded {X.shape[0]} images")
-        >>> print(f"Image shape: {X.shape[1]} features (32x32x3 flattened)")
+        >>> x, y = load_data(label_map)
+        >>> print(f"Loaded {x.shape[0]} images")
+        >>> print(f"Image shape: {x.shape[1]} features (32x32x3 flattened)")
         >>> print(f"Classes: {len(np.unique(y))}")
     """
+    print("=" * 100)
+    print("LOADING DATA")
+    print("=" * 100)
+
     # Initialize list of all category IDs (0 to NUM_CATEGORIES-1)
     categories = list(range(NUM_CATEGORIES))
 
