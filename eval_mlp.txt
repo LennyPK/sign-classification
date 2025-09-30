@@ -1,6 +1,10 @@
 ====================================================================================================
-EVALUATION REPORT
+EVALUATION REPORT: MLP Classifier
 ====================================================================================================
+Confusion Matrix Shape: (43, 43)
+Total Predictions: 14628
+Correct Predictions: 14239
+Incorrect Predictions: 389
                                                     precision    recall  f1-score   support
 
                               Speed limit (20km/h)       0.98      0.94      0.96        90
@@ -58,6 +62,3 @@ F1 (Macro): 97.07%
 Precision (Weighted): 97.37%
 Recall (Weighted): 97.34%
 F1 (Weighted): 97.34%
-Precision (Micro): 97.34%
-Recall (Micro): 97.34%
-F1 (Micro): 97.34%

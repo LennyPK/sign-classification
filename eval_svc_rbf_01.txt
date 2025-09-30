@@ -1,0 +1,64 @@
+====================================================================================================
+EVALUATION REPORT: SVC RBF 01
+====================================================================================================
+Confusion Matrix Shape: (43, 43)
+Total Predictions: 14628
+Correct Predictions: 14481
+Incorrect Predictions: 147
+                                                    precision    recall  f1-score   support
+
+                              Speed limit (20km/h)       1.00      0.94      0.97        90
+                              Speed limit (30km/h)       0.98      1.00      0.99       984
+                              Speed limit (50km/h)       0.99      0.97      0.98       522
+                              Speed limit (60km/h)       0.97      0.97      0.97       534
+                              Speed limit (70km/h)       0.98      0.99      0.98       750
+                              Speed limit (80km/h)       0.99      0.98      0.99       702
+                       End of speed limit (80km/h)       1.00      0.99      0.99       156
+                             Speed limit (100km/h)       0.99      0.97      0.98       546
+                             Speed limit (120km/h)       0.99      0.99      0.99       534
+                                        No passing       0.99      0.99      0.99       558
+      No passing for vechiles over 3.5 metric tons       0.99      1.00      0.99       762
+             Right-of-way at the next intersection       0.99      1.00      0.99       498
+                                     Priority road       0.99      1.00      0.99       798
+                                             Yield       1.00      1.00      1.00       816
+                                              Stop       1.00      1.00      1.00       294
+                                       No vechiles       1.00      0.97      0.99       234
+          Vechiles over 3.5 metric tons prohibited       1.00      0.99      1.00       156
+                                          No entry       1.00      1.00      1.00       420
+                                   General caution       0.99      0.99      0.99       456
+                       Dangerous curve to the left       0.99      0.95      0.97        78
+                      Dangerous curve to the right       0.99      0.95      0.97       132
+                                      Double curve       1.00      1.00      1.00       120
+                                        Bumpy road       1.00      0.98      0.99       144
+                                     Slippery road       0.99      0.99      0.99       192
+                         Road narrows on the right       1.00      0.99      1.00       102
+                                         Road work       0.99      0.99      0.99       570
+                                   Traffic signals       0.99      0.96      0.98       228
+                                       Pedestrians       1.00      0.99      0.99        90
+                                 Children crossing       0.99      0.99      0.99       204
+                                 Bicycles crossing       1.00      0.93      0.96       102
+                                Beware of ice/snow       0.99      0.99      0.99       168
+                             Wild animals crossing       0.99      1.00      0.99       294
+               End of all speed and passing limits       1.00      1.00      1.00        90
+                                  Turn right ahead       1.00      0.99      0.99       258
+                                   Turn left ahead       0.99      1.00      1.00       156
+                                        Ahead only       1.00      1.00      1.00       456
+                              Go straight or right       0.98      0.98      0.98       144
+                               Go straight or left       1.00      1.00      1.00        78
+                                        Keep right       0.99      1.00      0.99       786
+                                         Keep left       1.00      1.00      1.00       114
+                              Roundabout mandatory       1.00      0.98      0.99       132
+                                 End of no passing       1.00      0.99      0.99        90
+End of no passing by vechiles over 3.5 metric tons       1.00      1.00      1.00        90
+
+                                          accuracy                           0.99     14628
+                                         macro avg       0.99      0.99      0.99     14628
+                                      weighted avg       0.99      0.99      0.99     14628
+
+Accuracy: 99.00%
+Precision (Macro): 99.30%
+Recall (Macro): 98.63%
+F1 (Macro): 98.96%
+Precision (Weighted): 99.00%
+Recall (Weighted): 99.00%
+F1 (Weighted): 98.99%

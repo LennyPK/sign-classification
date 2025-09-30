@@ -1,6 +1,10 @@
 ====================================================================================================
-EVALUATION REPORT
+EVALUATION REPORT: SVC Linear
 ====================================================================================================
+Confusion Matrix Shape: (43, 43)
+Total Predictions: 14628
+Correct Predictions: 14356
+Incorrect Predictions: 272
                                                     precision    recall  f1-score   support
 
                               Speed limit (20km/h)       0.93      0.98      0.95        90
@@ -58,6 +62,3 @@ F1 (Macro): 97.97%
 Precision (Weighted): 98.16%
 Recall (Weighted): 98.14%
 F1 (Weighted): 98.14%
-Precision (Micro): 98.14%
-Recall (Micro): 98.14%
-F1 (Micro): 98.14%

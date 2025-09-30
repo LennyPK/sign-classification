@@ -61,6 +61,7 @@ RANDOM_STATE = 0  # Random seed for reproducibility
 # Cross-validation parameters
 CV_FOLDS = 2  # Number of cross-validation folds for grid search
 N_JOBS = -1  # Number of parallel jobs (-1 for all cores)
+VERBOSE_LEVEL = 2  # Level of verbosity for model training output
 
 # SVC parameter grids
 SVCParamGridKey = Literal["linear", "rbf", "poly", "comprehensive"]

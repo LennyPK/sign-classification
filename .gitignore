@@ -4,3 +4,7 @@ labels.csv
 *.pickle
 
 __pycache__/
+
+*.txt
+*.png
+*.zip
