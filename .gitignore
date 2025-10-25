@@ -5,6 +5,4 @@ labels.csv
 
 __pycache__/
 
-*.txt
-*.png
 *.zip
